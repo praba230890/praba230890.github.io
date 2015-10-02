@@ -1,0 +1,9 @@
+---
+layout: page
+title: About
+---
+
+<p class="message">
+  Hey there! This is just my scribbling pad for tech and I don't know what else to say but thanks for reading!
+</p>
+

@@ -1,0 +1,30 @@
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+relative_permalinks: true
+
+# Setup
+title:               Blog
+tagline:             (or) Scribble Pad
+url:                 http://praba230890.github.io
+paginate:            1
+baseurl:             ""
+
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir:          _sass
+  style:            :compressed
+
+# About/contact
+author:
+  name:              Prabakaran Santhanam
+  url:               https://github.com/praba230890
+  email:             praba230890@gmail.com
+
+# Custom vars
+version:             0.0.1
+github:
+  repo:              https://github.com/praba230890/praba230890.github.io
