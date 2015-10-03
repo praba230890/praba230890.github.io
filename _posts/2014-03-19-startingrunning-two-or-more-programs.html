@@ -1,0 +1,12 @@
+---
+layout: post
+title: Starting/running two or more programs using a single batch file
+date: '2014-03-19T11:19:00.001-07:00'
+author: Prabakaran Santhanam
+tags: 
+modified_time: '2014-03-19T11:25:21.471-07:00'
+blogger_id: tag:blogger.com,1999:blog-9128617390470614639.post-4910446927419807065
+blogger_orig_url: http://codificious.blogspot.com/2014/03/startingrunning-two-or-more-programs.html
+---
+
+My problem:<br />1. Need to start Wamp server (my lazy ass is using mysql from it)<br />2. Then need to open a command prompt, point it to a particular directory where my rails project is located and run the command<br /><br /><span style="background-color: #9fc5e8;">mongrel_rails start</span><br /><br />to start the rails environment.<br />3. Then finally need to start a browser and point it to local host and the particular port at which the app is listening.<br /><br />What I did (might be lame):<br />I have no problem doing the above steps to access the app, but my boss doesn't. All he needed is an icon which when he click would do all the above for him. No problem, right! Because, we have the beautiful batch files that could do the above tasks for us when got clicked. So I started writing a batch file. It goes like this(which I think is self explanatory),<br /><br /><span style="background-color: #9fc5e8;">@ECHO OFF</span><br /><span style="background-color: #9fc5e8;">START C:\wamp\wampmanager.exe</span><br /><span style="background-color: #9fc5e8;">start cmd /c "cd c:\project &amp;&amp; mongrel_rails start &amp;&amp; pause"</span><br /><span style="background-color: #9fc5e8;">cd C:\ProgramFiles(x86)\Google\Chrome\Application</span><br /><span style="background-color: #9fc5e8;">start chrome.exe http://127.0.0.1:3000</span><br /><span style="background-color: #9fc5e8;">sleep1</span><br /><span style="background-color: #9fc5e8;">exit</span><br /><br />which I saved as filename.bat on desktop. Double clicked it: problem solved.

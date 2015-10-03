@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      With Forth - 1 &middot; Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Blog" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">Blog</a>
+          <small>(or) Scribble Pad</small>
+        </h3>
+      </header>
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">With Forth - 1</h1>
+  <time datetime="2015-06-01T18:58:00+05:30" class="post-date">01 Jun 2015</time>
+  <div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/-HIBUI6gB1C0/VWxjpj8MBoI/AAAAAAAAAyM/Mg8Yx3RK0tk/s1600/Screenshot%2Bfrom%2B2015-06-01%2B19%253A21%253A30.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" height="108" src="http://4.bp.blogspot.com/-HIBUI6gB1C0/VWxjpj8MBoI/AAAAAAAAAyM/Mg8Yx3RK0tk/s320/Screenshot%2Bfrom%2B2015-06-01%2B19%253A21%253A30.png" width="320" /></a></div><br /><br />I've started learning the Forth programming language. If you are about to learn Forth, then pay attention when they say "It's a stack based programming language". At first, I thought this as some sort of technical shit boasting out the implementation of Forth or something as I'm a low life programmer. But after fiddling with it for a while (thanks to the "Implicit Data Passing" section of <a href="http://thinking-forth.sourceforge.net/" target="_blank">Thinking Forth by Leo Brodie</a>) I finally understood what stack based programming is and now I've written my first working program in Forth which I was trying for the past few hours: a function to sum two numbers.<br /><br />: ADD + ;<br />5 10 ADD CR .<br /><br />Now, this stack based programming is exciting (I'm yet to know thier pros and cons). Here, in the above two lines of code, I'm assigning the '+' operator to the word 'ADD'. Then in the next line I'm adding the numbers 5 and 10 then printing them on the screen as the word 'ADD' means '+'. The second line of code is&nbsp; equivalent to <br /><br />5 10 + CR .<br /><br />where 'CR' is carriage return and '.' is used to print the output value to screen. So, don't worry about 'CR' and '.'.<br /><br />What I understood from the above: 5 is first stored (pushed) in to the stack and&nbsp; then 10 is stored (pushed) above 5. With Last In First Out LIFO 'ADD' which&nbsp; translates to '+' adds the last two values (by popping them out) of the stack and&nbsp; puts (pushes) the output on the top of the stack. So, here we would be having 15&nbsp; at the top of the stack which is printed out to us by '.' operator.<br /><br />Now, I wanted to show how this program works to my friends by summing a pair of integers. But, it was painfull (&amp; not so cool) to type 'CR .' at the&nbsp; end of each function call to print the output of the function 'ADD' each time. Then&nbsp; the below lines from <a href="http://thinking-forth.sourceforge.net/" target="_blank">Thinking Forth</a>, by Leo Brodie, flashed into my brain (which won't happen very often),<br /><br /><blockquote class="tr_bq">The smallest atom of a Forth program is not a module or a subroutine or a&nbsp; procedure, but a “word.”</blockquote><br />and<br /><br /><blockquote class="tr_bq">Everything in Forth is a word.</blockquote><br />So, here '+' should be a word, 'CR' should be a word and '.' should be a word too. And in Forth we can group together any number of words and assign it to a word.<br /><br />: ADD + CR . ;<br />5 10 ADD<br /><br />This is not only cool, but seems powerful to me. Now, I'm getting excited to&nbsp; further dive into Forth. <br /><br />Also, some of my friends argued that the below piece of code won't qualify for a function to which I wrote the below code, a function to sum four numbers.<br /><br />: 4add + + +&nbsp; cr . ;<br />9 8 1 2 4add<br /><br />Which outputs 10<br /><br />
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2015/09/02/token-based-authentication-django-rest-api/">
+            Token based, authenticated REST API's with the help of Django Rest Framework (DRF)
+            <small><time datetime="2015-09-02T00:00:00+05:30">02 Sep 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/28/configuing-automatic-postgresql/">
+            Configuing Automatic PostgreSQL Database Backup Using Cron
+            <small><time datetime="2015-07-28T12:17:00+05:30">28 Jul 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/25/creating-symbolic-links-without-too/">
+            Creating symbolic links without "too many levels of symbolic links" error
+            <small><time datetime="2015-07-25T13:44:00+05:30">25 Jul 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+        </small>
+      </footer>
+    </div>
+
+  </body>
+</html>

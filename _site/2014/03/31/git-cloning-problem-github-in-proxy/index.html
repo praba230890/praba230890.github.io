@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Fedora: Git cloning Problem (Github) in proxy connection &middot; Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Blog" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">Blog</a>
+          <small>(or) Scribble Pad</small>
+        </h3>
+      </header>
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">Fedora: Git cloning Problem (Github) in proxy connection</h1>
+  <time datetime="2014-03-31T23:49:00+05:30" class="post-date">31 Mar 2014</time>
+  <div style="text-align: justify;">Today after installing <a href="http://spins.fedoraproject.org/scientific-kde/%E2%80%8E" target="_blank">Fedora Scientific</a>, I decided to master Unix type OS and then Git (which I wanted to learn for the last couple of years but had no time). I'm accessing Internet through our college connection which needs proxy to be configured. So, I configured the proxy on Fedora and then Firefox to access this awesome book <a href="http://www.git-scm.com/book" target="_blank">Pro Git</a>.&nbsp;</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Then as per the <a href="http://www.git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository" target="_blank">author said </a>I tried to clone <a href="https://github.com/schacon/grit" target="_blank">this project</a>&nbsp;from GitHub and ended up with an error message. I already had this kind of proxy related mess on Ruby on Rails in Windows, but here in Fedora! I don't know? I first thought. But it was frickin easy to rectify this proxy problem (after a few minutes googling) as I executed this command,</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><span style="background-color: #9fc5e8;">$ git config --global http.proxy '172.16.0.18:8080'</span></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">prior to executing the</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><span style="background-color: #9fc5e8;">$ git clone&nbsp;https://github.com/schacon/grit</span></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Problem solved. Connection was established and cloning was&nbsp;successful.</div>
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2015/09/02/token-based-authentication-django-rest-api/">
+            Token based, authenticated REST API's with the help of Django Rest Framework (DRF)
+            <small><time datetime="2015-09-02T00:00:00+05:30">02 Sep 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/28/configuing-automatic-postgresql/">
+            Configuing Automatic PostgreSQL Database Backup Using Cron
+            <small><time datetime="2015-07-28T12:17:00+05:30">28 Jul 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/25/creating-symbolic-links-without-too/">
+            Creating symbolic links without "too many levels of symbolic links" error
+            <small><time datetime="2015-07-25T13:44:00+05:30">25 Jul 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+        </small>
+      </footer>
+    </div>
+
+  </body>
+</html>

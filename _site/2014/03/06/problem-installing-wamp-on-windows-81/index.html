@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Problem installing WAMP on Windows 8.1! &middot; Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Blog" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">Blog</a>
+          <small>(or) Scribble Pad</small>
+        </h3>
+      </header>
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">Problem installing WAMP on Windows 8.1!</h1>
+  <time datetime="2014-03-06T07:34:00+05:30" class="post-date">06 Mar 2014</time>
+  I just updated to Windows 8.1 from 8 and installed Wamp server. At first, Wamp is not working. I mean, I can't open the localhost or any other services from Wamp. So I queried Google and tried installing apache (click Wamp -&gt; Apache -&gt; service -&gt; install service) and mysql&nbsp;<span style="font-family: '';">(click Wamp -&gt; MySql-&gt; service -&gt; install service)&nbsp;</span>service. That's it, everything works.<br /><br />Then I tried the phpmyadmin page but it asked me password like it did the last time. I saved some instructions in my evernote about it once, but I was too fuckin' lazy to go through that shit. So I opened the mysql console and typed:<br />show databases;<br />use mysql;<br />from table user show *;<br /><br />which gave me the username - 'root' and password - ''(blank), using which I used to logged in to my phpmyadmin. But my lazy ass forgot to think about something. I don't want to go through the login page every time on my local server, so all I need is to disable the login page and save me some overhead. So again I went back to my evernote shits. Then I edited (from dir:root/wamp/apps/phpmyadmin/config.inc.php ) the line:<br /><br />/* Authentication type */<br />$cfg['Servers'][$i]['auth_type'] = 'cookie';<br /><br />&nbsp;to<br /><br />/* Authentication type */<br />$cfg['Servers'][$i]['auth_type'] = 'config';<br /><br />Which solved my problem, adios!<br /><br />Resources that might have helped me:<br />http://forum.wampserver.com/read.php?2,116611<br />http://www.ntu.edu.sg/home/ehchua/programming/howto/WampServer_HowTo.html<br /><br />This helps too:<br />http://stackoverflow.com/questions/273159/how-to-determine-if-a-port-is-open-on-a-windows-server<br />http://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html<br /><br />
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2015/09/02/token-based-authentication-django-rest-api/">
+            Token based, authenticated REST API's with the help of Django Rest Framework (DRF)
+            <small><time datetime="2015-09-02T00:00:00+05:30">02 Sep 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/28/configuing-automatic-postgresql/">
+            Configuing Automatic PostgreSQL Database Backup Using Cron
+            <small><time datetime="2015-07-28T12:17:00+05:30">28 Jul 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/25/creating-symbolic-links-without-too/">
+            Creating symbolic links without "too many levels of symbolic links" error
+            <small><time datetime="2015-07-25T13:44:00+05:30">25 Jul 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+        </small>
+      </footer>
+    </div>
+
+  </body>
+</html>

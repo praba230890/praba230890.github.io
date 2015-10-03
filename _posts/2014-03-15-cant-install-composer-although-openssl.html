@@ -1,0 +1,12 @@
+---
+layout: post
+title: Can't install Composer although openssl extension enabled in Wamp!
+date: '2014-03-14T12:32:00.001-07:00'
+author: Prabakaran Santhanam
+tags: 
+modified_time: '2014-03-14T12:44:25.703-07:00'
+blogger_id: tag:blogger.com,1999:blog-9128617390470614639.post-8643658666291423564
+blogger_orig_url: http://codificious.blogspot.com/2014/03/cant-install-composer-although-openssl.html
+---
+
+I tried installing <a href="https://getcomposer.org/download/" target="_blank">Composer&nbsp;</a>which irritated me at first by telling me to enable the openssl extension and recompile my PHP. I always use Wamp on my home computer, which told me that openssl was installed and active (wamp-&gt; php -&gt; php extensions).<br /><br />I tried for a few times, disabling and enabling openssl and restarting all services every time. Still ended up with the same error, irritated me more. Then had a smoke and while doing so, my hand guided my computer to the directory where php.ini (in ../wamp/bin/php.phpx.x.xx/) file was located, opened it and searched for openssl. There I found a line 'extension=php_openssl.dll', as a comment.<br /><br />I uncommented the line, saved the file and restarted all services on Wamp. Waited for a few seconds and ran the composer setup to witness it installing without any trouble. It was an emotional moment for me.<br /><br />Now, why I installed Composer for! I don't know. I've got to go figure it out now. my ass!

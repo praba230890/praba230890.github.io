@@ -1,0 +1,12 @@
+---
+layout: post
+title: ! 'pyQt: ui file to py file conversion in windows'
+date: '2014-03-12T16:19:00.000-07:00'
+author: Prabakaran Santhanam
+tags: 
+modified_time: '2014-03-12T16:19:20.343-07:00'
+blogger_id: tag:blogger.com,1999:blog-9128617390470614639.post-938359066271666529
+blogger_orig_url: http://codificious.blogspot.com/2014/03/pyqt-ui-file-to-py-file-conversion-in.html
+---
+
+<div style="text-align: justify;">Once the anyfile.ui file is saved then it could be converted into anyfile.py file using uic.py script.&nbsp;</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Step 1: Download and install <a href="https://qt-project.org/wiki/PySide" target="_blank">PySide</a>.</div><div style="text-align: justify;">Step 2: Open your command prompt and head to the directory where the installed PySide scripts were located on your computer like in mine, C:\Python27\Lib\site-packages\PySide\scripts</div><div style="text-align: justify;">Step 3: Now type the command '<span class="pln">python uic</span><span class="pun">.</span><span class="pln">py input</span><span class="pun">.</span><span class="pln">ui </span><span class="pun">-</span><span class="pln">o output</span><span class="pun">.</span><span class="pln">py </span><span class="pun">-</span><span class="pln">x', in which you have to only change the input and output file names. For me this command worked '</span>C:\Python27\Lib\site-packages\PySide\scripts&gt;python uic.py D:\PyEx\sam.ui -o D:\PyEx\output.py -x'</div><div style="text-align: justify;">Note: It would be easier if the ui file to be converted is saved in the same directory as the uic.py file.</div><div style="text-align: justify;">Step 4: Open, run and verify the output py file and have a self five.</div>

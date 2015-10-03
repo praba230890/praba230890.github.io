@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Did simple Django installation on Windows (Python)! &middot; Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Blog" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">Blog</a>
+          <small>(or) Scribble Pad</small>
+        </h3>
+      </header>
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">Did simple Django installation on Windows (Python)!</h1>
+  <time datetime="2014-03-15T00:32:00+05:30" class="post-date">15 Mar 2014</time>
+  <div style="text-align: justify;">Today I downloaded some apps that were build on Django. At first I thought it's gonna be a pain in my ass to set up Django and then configure those apps, even to have a glimpse of how they look and work. But I was wrong. I already had <a href="http://www.python.org/download/" target="_blank">Python </a>installed on my computer. So I followed the below steps:</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Step 1: Went to <a href="https://www.djangoproject.com/download/" target="_blank">Django official download page</a>,&nbsp;downloaded&nbsp;<a href="https://www.djangoproject.com/download/1.6.2/tarball/" style="background-color: white; font-family: Verdana, sans-serif; font-size: 12px; line-height: 16.799999237060547px; margin-left: 0px; margin-right: 0px;"><span style="color: blue;">Django-1.6.2.tar.gz</span></a>&nbsp;and unzipped it into a local folder named 'Django'.</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Step 2: Opened command prompt and headed to the local folder 'Django' (C:\Users\userX\Documents\Django).</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Step 3: ran the command,</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><span style="background-color: #9fc5e8;">python<span style="line-height: 16.796875px;">&nbsp;setup.py install</span></span></div><div style="text-align: justify;"><span style="line-height: 16.796875px;"><br /></span></div><div style="text-align: justify;"><span style="line-height: 16.796875px;">which made the command prompt go crazy while I sat in front of my computer feeling like a nerd.&nbsp;</span></div><div style="text-align: justify;"><span style="line-height: 16.796875px;"><br /></span></div><div style="text-align: justify;"><span style="line-height: 16.796875px;"><b>Note</b>: If you encountered the error, '<span style="color: red;">python' is not recognized as an internal or external command,&nbsp;</span></span><span style="line-height: 16.796875px;"><span style="color: red;">operable program or batch file,&nbsp;</span>in this step, then add&nbsp;</span><span style="color: #073763;">C:\PythonXX\;C:\PythonXX\Scripts;</span><span style="line-height: 16.796875px;">&nbsp;(XX is version of your python like python27 or python33 and so) to your PATH environment variable (system-&gt; advanced sys settings -&gt; environment variables -&gt; PATH-&gt; edit).</span></div><div style="text-align: justify;"><span style="line-height: 16.796875px;"><br /></span></div><div style="text-align: justify;"><span style="line-height: 16.796875px;">Step 4: Once my command prompt came to rest, I typed 'python' and hit enter to turn it into Python interpreter. Then tried importing django (import django) and checked its version (</span>print(django.get_version())<span style="line-height: 16.796875px;">). Success!</span></div><div style="text-align: justify;"><span style="line-height: 16.796875px;"><br /></span></div><div style="text-align: justify;"><span style="line-height: 16.796875px;">Step 5: Typed 'ctrl+c' to bounce back to command prompt from interpreter. Then I created an another local directory to create a sample app, took the command prompt to it and entered the command,&nbsp;</span></div><div style="text-align: justify;"><span style="line-height: 16.796875px;"><br /></span></div><div style="text-align: justify;"><span style="background-color: #9fc5e8;"><span style="line-height: 16.796875px;">python C:\python27\Scripts\django-admin.py&nbsp;</span><span style="line-height: 16.796875px;">startproject myapp_sample</span></span></div><div style="text-align: justify;"><span style="line-height: 16.796875px;"><br /></span></div><div style="text-align: justify;"><span style="line-height: 16.796875px;">to finally check every thing's alright and it was, surprisingly</span><span style="line-height: 16.796875px;">.&nbsp;</span></div>
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2015/09/02/token-based-authentication-django-rest-api/">
+            Token based, authenticated REST API's with the help of Django Rest Framework (DRF)
+            <small><time datetime="2015-09-02T00:00:00+05:30">02 Sep 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/28/configuing-automatic-postgresql/">
+            Configuing Automatic PostgreSQL Database Backup Using Cron
+            <small><time datetime="2015-07-28T12:17:00+05:30">28 Jul 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/25/creating-symbolic-links-without-too/">
+            Creating symbolic links without "too many levels of symbolic links" error
+            <small><time datetime="2015-07-25T13:44:00+05:30">25 Jul 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+        </small>
+      </footer>
+    </div>
+
+  </body>
+</html>

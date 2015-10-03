@@ -1,0 +1,13 @@
+---
+layout: post
+title: Setting up Debian server from scratch for Django (Nginx, Postresql, Gunicorn,
+  Django and Supervisor) - Part II
+date: '2015-08-27T05:35:00.000-07:00'
+author: Prabakaran Santhanam
+tags: 
+modified_time: '2015-08-27T05:35:42.625-07:00'
+blogger_id: tag:blogger.com,1999:blog-9128617390470614639.post-528151886241635636
+blogger_orig_url: http://codificious.blogspot.com/2015/08/setting-up-debian-server-from-scratch.html
+---
+
+###### START OF SERVER CONFIGURATION ######<br /><br />1. Install Nginx server<br /><br />$ apt-get install nginx<br /><br />2. Check server status<br /><br />$ service nginx status<br /><br />If it is not running run it by<br /><br />$ service nginx start<br /><br />to check where the configuration files are located and if they are fine,<br /><br />$ sudo /usr/sbin/nginx -t<br /><br />if the nginx binary location is unknown, then try $ which nginx <br /><br />3. Install PostgreSQL<br /><br />$ apt-get install libpq-dev python-dev<br /><br />$ apt-get install postgresql postgresql-contrib<br /><br />to check status and start, stop and restart the server use service utility<br /><br />To create a database with role along it to use in Django project,<br /><br />$ su - postgres<br /><br />the above command will log us into postgres user account,<br /><br />First, create a database for testing,<br /><br />$ createdb database_name<br /><br />then create a role to associate with that database we've created.<br /><br />$ createuser role_name -P<br /><br />finally, grant the privileges for the DB to the role we've created,<br /><br />$ psql<br /><br />postgres=# GRANT ALL PRIVILEGES ON DATABASE database_name TO role_name;<br /><br />Once the database and the respective role has been created, then we are ready to move on to Django.<br /><br />###### END OF SERVER CONFIGURATION ######

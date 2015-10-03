@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    
+      Solution to "The bundled mysql.rb driver has been removed from Rails 2.2. Please install the mysql gem and try again: gem install mysql. rake aborted! no such file to load -- mysql/mysql_api" &middot; Blog
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="Blog" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <div class="container content">
+      <header class="masthead">
+        <h3 class="masthead-title">
+          <a href="/" title="Home">Blog</a>
+          <small>(or) Scribble Pad</small>
+        </h3>
+      </header>
+
+      <main>
+        <article class="post">
+  <h1 class="post-title">Solution to "The bundled mysql.rb driver has been removed from Rails 2.2. Please install the mysql gem and try again: gem install mysql. rake aborted! no such file to load -- mysql/mysql_api"</h1>
+  <time datetime="2014-03-15T20:25:00+05:30" class="post-date">15 Mar 2014</time>
+  I tried <a href="http://projectfedena.org/install" target="_blank">installing Fedena </a>this evening. While going through the fifth step i,e executing the command<br /><br /><span style="background-color: #9fc5e8;">rake db:create</span><br /><br />on my command prompt I ended up with this error message "<span style="color: red;">!!! The bundled mysql.rb driver has been removed from Rails 2.2. Please install the mysql gem and try again: gem install mysql. rake aborted! no such file to load -- mysql/mysql_api</span>". I tried a lot of websites for a solution and ended up smoking three cigarettes in a row and of course with no solution.<br /><br />Then after an episode of 'House of cards', I again checked back the error and tried the command<br /><br /><span style="background-color: #9fc5e8; font-family: '';">gem install mysql</span><br /><span style="font-family: '';"><br /></span><span style="font-family: '';">which I did tried three or four times before but neglected the description it gave me. It said the mysql connector was installed successfully but the version might change so get the libmysql.dll from the location it downloaded (for me it is,&nbsp;</span>http://cdn.mysql.com/Downloads/Connector-C/mysql-connector-c-noinstall-6.0.2-win32.zip<span style="font-family: '';">) the connector into C:\ruby\bin (bin folder in your ruby installation).</span><br /><span style="font-family: '';"><br /></span><span style="font-family: '';">Then reluctantly I copied the above url and downloaded the zip file. From the zip I extracted the libmysql.dll (\lib\libmysql.dll) file into the config folder in Fedena directory and replaced the already existing file. That's it. Then the command</span><br /><span style="background-color: #9fc5e8; font-family: '';"><br /></span><span style="background-color: #9fc5e8; font-family: '';">rake db:create</span><br />worked smoothly and I continued installing Fedena successfully.
+</article>
+
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2015/09/02/token-based-authentication-django-rest-api/">
+            Token based, authenticated REST API's with the help of Django Rest Framework (DRF)
+            <small><time datetime="2015-09-02T00:00:00+05:30">02 Sep 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/28/configuing-automatic-postgresql/">
+            Configuing Automatic PostgreSQL Database Backup Using Cron
+            <small><time datetime="2015-07-28T12:17:00+05:30">28 Jul 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/25/creating-symbolic-links-without-too/">
+            Creating symbolic links without "too many levels of symbolic links" error
+            <small><time datetime="2015-07-25T13:44:00+05:30">25 Jul 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
+
+      </main>
+
+      <footer class="footer">
+        <small>
+          <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+        </small>
+      </footer>
+    </div>
+
+  </body>
+</html>
