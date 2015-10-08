@@ -41,14 +41,14 @@
   
   <article class="post">
     <h1 class="post-title">
-      <a href="/2014/03/11/grabbing-screen-size-in-wxpython/">
-        Grabbing screen size in wxPython
+      <a href="/2014/03/13/pyqt-ui-file-to-py-file-conversion-in/">
+        pyQt: ui file to py file conversion in windows
       </a>
     </h1>
 
-    <time datetime="2014-03-11T12:27:00+05:30" class="post-date">11 Mar 2014</time>
+    <time datetime="2014-03-13T04:49:00+05:30" class="post-date">13 Mar 2014</time>
 
-    &gt;&gt;import wx<br />&gt;&gt;screen_size = wx.DisplaySize()<br />&gt;&gt;print (screen_size)<br /><br />&gt;&gt;(width, height)<br /><br /><br /><br />
+    <div style="text-align: justify;">Once the anyfile.ui file is saved then it could be converted into anyfile.py file using uic.py script.&nbsp;</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Step 1: Download and install <a href="https://qt-project.org/wiki/PySide" target="_blank">PySide</a>.</div><div style="text-align: justify;">Step 2: Open your command prompt and head to the directory where the installed PySide scripts were located on your computer like in mine, C:\Python27\Lib\site-packages\PySide\scripts</div><div style="text-align: justify;">Step 3: Now type the command '<span class="pln">python uic</span><span class="pun">.</span><span class="pln">py input</span><span class="pun">.</span><span class="pln">ui </span><span class="pun">-</span><span class="pln">o output</span><span class="pun">.</span><span class="pln">py </span><span class="pun">-</span><span class="pln">x', in which you have to only change the input and output file names. For me this command worked '</span>C:\Python27\Lib\site-packages\PySide\scripts&gt;python uic.py D:\PyEx\sam.ui -o D:\PyEx\output.py -x'</div><div style="text-align: justify;">Note: It would be easier if the ui file to be converted is saved in the same directory as the uic.py file.</div><div style="text-align: justify;">Step 4: Open, run and verify the output py file and have a self five.</div>
   </article>
   
 </div>

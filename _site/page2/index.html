@@ -41,14 +41,121 @@
   
   <article class="post">
     <h1 class="post-title">
-      <a href="/2015/07/28/configuing-automatic-postgresql/">
-        Configuing Automatic PostgreSQL Database Backup Using Cron
+      <a href="/2015/09/02/token-based-authentication-django-rest-api/">
+        Token based, authenticated REST API's with the help of Django Rest Framework (DRF)
       </a>
     </h1>
 
-    <time datetime="2015-07-28T12:17:00+05:30" class="post-date">28 Jul 2015</time>
+    <time datetime="2015-09-02T00:00:00+05:30" class="post-date">02 Sep 2015</time>
 
-    First, use crontab,<br /><br /><blockquote class="tr_bq">$ crontab -e</blockquote><br />add the following lines at the end of the file <br /><pre style="background-image: URL(http://2.bp.blogspot.com/_z5ltvMQPaa8/SjJXr_U2YBI/AAAAAAAAAAM/46OqEP32CJ8/s320/codebg.gif); background: #f0f0f0; border: 1px dashed #CCCCCC; color: black; font-family: arial; font-size: 12px; height: auto; line-height: 20px; overflow: auto; padding: 0px; text-align: left; width: 99%;"><code style="color: black; word-wrap: normal;"> ####backup toppers sb everyday##########  <br />   <br /> # m h dom mon dow             command   <br />   <br />   0 0  *    *   *   cd /home/user/db_backup &amp;&amp; ./backup &gt; /dev/null 2&gt;&amp;1  <br /></code></pre><br />where,<br /><br /><pre style="background-image: URL(http://2.bp.blogspot.com/_z5ltvMQPaa8/SjJXr_U2YBI/AAAAAAAAAAM/46OqEP32CJ8/s320/codebg.gif); background: #f0f0f0; border: 1px dashed #CCCCCC; color: black; font-family: arial; font-size: 12px; height: auto; line-height: 20px; overflow: auto; padding: 0px; text-align: left; width: 99%;"><code style="color: black; word-wrap: normal;"> # m h dom mon dow  command   <br /></code></pre><br />is the format.<br /><br />m - Minute (0-59)<br />h - Hour (0-23)<br />dom - Day of Month (1-31)<br />mon - Month (1-12)<br />dow - Day of week (0-6, starting with Sunday)<br /><br />and the command is the shell command that you want the cron to execute at the specified time.<br /><br />Here in the above example I've asked cron to execute the command<br /><br /><pre style="background-image: URL(http://2.bp.blogspot.com/_z5ltvMQPaa8/SjJXr_U2YBI/AAAAAAAAAAM/46OqEP32CJ8/s320/codebg.gif); background: #f0f0f0; border: 1px dashed #CCCCCC; color: black; font-family: arial; font-size: 12px; height: auto; line-height: 20px; overflow: auto; padding: 0px; text-align: left; width: 99%;"><code style="color: black; word-wrap: normal;"> cd /home/user/db_backup &amp;&amp; ./backup &gt; /dev/null 2&gt;&amp;1  <br /></code></pre><br />at every dom, mon and dow. That is what for the '*' is used. So, as everyday starts, cron will run the command I've specified.<br /><br />In the above command in cron, I've asked cron to execute a shell script named backup. I've done this in order to declare some variables or settings needed for backing up the database without complicating the crontab. It will also be easy to maintain different shell scripts for backing up different databases with respective configurations.<br /><br />In backup file,<br /><blockquote class="tr_bq">$ nano /home/user/db_backup/backup</blockquote><pre style="background-image: URL(http://2.bp.blogspot.com/_z5ltvMQPaa8/SjJXr_U2YBI/AAAAAAAAAAM/46OqEP32CJ8/s320/codebg.gif); background: #f0f0f0; border: 1px dashed #CCCCCC; color: black; font-family: arial; font-size: 12px; height: auto; line-height: 20px; overflow: auto; padding: 0px; text-align: left; width: 99%;"><code style="color: black; word-wrap: normal;"> #! /bin/bash  <br /> FILE="/home/user/db_backup/backup_$(date +%Y%m%d_%H%M%S).pgsql"  <br /> pg_dump --no-password database_name &gt; $FILE  <br /></code></pre><br />I've created a file name and stored it into FILE variable, then dumped the database into a new file with name FILE. If you are using openscg or something, and if that specific environment is not added in the current environment, then add the following line next to shebang,<br /><br /><pre style="background-image: URL(http://2.bp.blogspot.com/_z5ltvMQPaa8/SjJXr_U2YBI/AAAAAAAAAAM/46OqEP32CJ8/s320/codebg.gif); background: #f0f0f0; border: 1px dashed #CCCCCC; color: black; font-family: arial; font-size: 12px; height: auto; line-height: 20px; overflow: auto; padding: 0px; text-align: left; width: 99%;"><code style="color: black; word-wrap: normal;"> source /opt/postgres/9.1/pg91-openscg.env # for openscg  <br /></code></pre><br />But, the above setup will end with an error message,<br /><br /><blockquote class="tr_bq"><span style="color: red;">pg_dump: [archiver (db)] connection to database 'database_name' failed: fe_sendauth: no password supplied</span><br /><span style="color: red;"></span></blockquote><br />as there should be a password supplied in order to authenticate a user to back up the database. As we are automating the backup we can't (I'm not sure here) enter the password interactively every time. So, we've to supply the password in some implicit way. Postgresql gives us an option in the form of a .pgpass file. <br /><br />.pgpass file should be created in home directory and it should contain the following details,<br /><blockquote class="tr_bq">$ nano ~/.pgpass</blockquote><pre style="background-image: URL(http://2.bp.blogspot.com/_z5ltvMQPaa8/SjJXr_U2YBI/AAAAAAAAAAM/46OqEP32CJ8/s320/codebg.gif); background: #f0f0f0; border: 1px dashed #CCCCCC; color: black; font-family: arial; font-size: 12px; height: auto; line-height: 20px; overflow: auto; padding: 0px; text-align: left; width: 99%;"><code style="color: black; word-wrap: normal;"> hostname:port:database:username:password  <br /></code></pre>now restart the postgresql and check if the backup works without a password by executing the backup file.<br /><br />$ chmod +x /home/user/db_backup/backup&nbsp; # making 'backup' executable<br />$ /home/user/db_backup/backup<br /><br />This will backup a database in the db_backup directory or any other directory you've specified in backup script file with current date and time. 
+    <h3 id="add-restframework-and-restframeworkauthtoken-to-installed-apps-in-django-project-settings-file">Add rest_framework and rest_framework.authtoken to installed apps in Django project settings file</h3>
+
+<p>First install DRF</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>pip install djangorestframework</code></pre></div>
+
+<p>then add the DRF to installed apps,</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+<span class="c">#    &#39;django_admin_bootstrapped&#39;,</span>
+    <span class="s">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+    <span class="s">&#39;rest_framework&#39;</span><span class="p">,</span>
+    <span class="s">&#39;rest_framework.authtoken&#39;</span><span class="p">,</span>
+    <span class="s">&#39;.....&#39;</span><span class="p">,</span>
+    <span class="p">)</span></code></pre></div>
+
+<p>and run migrations for the DRF,</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>python manage.py makemigrations
+<span class="nv">$ </span>python manage.py migrate</code></pre></div>
+
+<h3 id="token-generation-code-for-each-new-user-to-be-created-in-relevent-models-file">Token generation code for each new user to be created (in relevent models file)</h3>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># models.py</span>
+
+<span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">django.db.models.signals</span> <span class="kn">import</span> <span class="n">post_save</span>
+<span class="kn">from</span> <span class="nn">django.dispatch</span> <span class="kn">import</span> <span class="n">receiver</span>
+<span class="kn">from</span> <span class="nn">rest_framework.authtoken.models</span> <span class="kn">import</span> <span class="n">Token</span>
+
+<span class="nd">@receiver</span><span class="p">(</span><span class="n">post_save</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">AUTH_USER_MODEL</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">create_auth_token</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">created</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">created</span><span class="p">:</span>
+        <span class="n">Token</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">instance</span><span class="p">)</span></code></pre></div>
+
+<p>for already existing users, the token can be generated by running the below snippet in django shell</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># python manage.py shell</span>
+
+<span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="nn">rest_framework.authtoken.models</span> <span class="kn">import</span> <span class="n">Token</span>
+
+<span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+    <span class="n">Token</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span></code></pre></div>
+
+<h3 id="adding-api-endpoint-for-getting-tokens">Adding API endpoint for getting tokens</h3>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># urls.py</span>
+
+<span class="kn">from</span> <span class="nn">rest_framework.authtoken</span> <span class="kn">import</span> <span class="n">views</span>
+<span class="kn">from</span> <span class="nn">myapp.views</span> <span class="kn">import</span> <span class="n">MyView</span>
+<span class="n">urlpatterns</span> <span class="o">+=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^get/my/view/$&#39;</span><span class="p">,</span> <span class="n">MyView</span><span class="o">.</span><span class="n">as_view</span><span class="p">()),</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^token/&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">obtain_auth_token</span><span class="p">),</span>
+<span class="p">]</span></code></pre></div>
+
+<h3 id="adding-an-api-endpoint-view-under-token-authentication">Adding an API endpoint view under token authentication</h3>
+
+<p>For class based views</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># views.py</span>
+
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
+<span class="kn">from</span> <span class="nn">rest_framework.authentication</span> <span class="kn">import</span> <span class="n">TokenAuthentication</span><span class="p">,</span> <span class="n">BasicAuthentication</span>
+<span class="kn">from</span> <span class="nn">rest_framework.permissions</span> <span class="kn">import</span> <span class="n">IsAuthenticated</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+
+<span class="k">class</span> <span class="nc">MyView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; subclass from APIView inorder to use the token based authentication provided by DRF&quot;&quot;&quot;</span>
+    <span class="n">authentication_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">TokenAuthentication</span><span class="p">,)</span>
+    <span class="n">permission_classes</span> <span class="o">=</span> <span class="p">(</span><span class="n">IsAuthenticated</span><span class="p">,)</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s">&#39;Data&#39;</span><span class="p">:</span><span class="s">&#39;My View&#39;</span><span class="p">})</span></code></pre></div>
+
+<p>For function based views</p>
+
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#views.py</span>
+
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
+<span class="kn">from</span> <span class="nn">rest_framework.decorators</span> <span class="kn">import</span> <span class="n">api_view</span><span class="p">,</span> <span class="n">authentication_classes</span><span class="p">,</span> <span class="n">permission_classes</span>
+<span class="kn">from</span> <span class="nn">rest_framework.authentication</span> <span class="kn">import</span> <span class="n">TokenAuthentication</span><span class="p">,</span> <span class="n">BasicAuthentication</span>
+<span class="kn">from</span> <span class="nn">rest_framework.permissions</span> <span class="kn">import</span> <span class="n">IsAuthenticated</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+
+<span class="nd">@api_view</span><span class="p">([</span><span class="s">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@authentication_classes</span><span class="p">((</span><span class="n">TokenAuthentication</span><span class="p">,))</span>
+<span class="nd">@permission_classes</span><span class="p">((</span><span class="n">IsAuthenticated</span><span class="p">,))</span>
+<span class="k">def</span> <span class="nf">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s">&#39;Data&#39;</span><span class="p">:</span><span class="s">&#39;My View&#39;</span><span class="p">})</span></code></pre></div>
+
+<h3 id="testing">testing</h3>
+
+<p>Once everything has been done, create a user and test if everything works fine.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>curl -X POST -d <span class="s1">&#39;username=username&amp;password=password&#39;</span> localhost:8000/token/
+<span class="o">{</span><span class="s2">&quot;token&quot;</span>:<span class="s2">&quot;6874e18a8e754df76ab140744c9310142e6f8943&quot;</span><span class="o">}</span>
+<span class="nv">$ </span>curl -H <span class="s2">&quot;Authorization: Token 6874e18a8e754df76ab140744c9310142e6f8943&quot;</span> http://localhost:8000/get/my/view/
+<span class="o">{</span><span class="s1">&#39;Data&#39;</span>:<span class="s1">&#39;My View&#39;</span><span class="o">}</span>
+<span class="nv">$ </span>curl http://localhost:8000/get/my/view/
+<span class="o">{</span><span class="s2">&quot;detail&quot;</span>: <span class="s2">&quot;Authentication credentials were not provided.&quot;</span><span class="o">}</span></code></pre></div>
+
+
   </article>
   
 </div>

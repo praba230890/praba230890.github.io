@@ -41,21 +41,21 @@
   
   <article class="post">
     <h1 class="post-title">
-      <a href="/2014/03/06/problem-installing-wamp-on-windows-81/">
-        Problem installing WAMP on Windows 8.1!
+      <a href="/2014/03/11/grabbing-screen-size-in-wxpython/">
+        Grabbing screen size in wxPython
       </a>
     </h1>
 
-    <time datetime="2014-03-06T07:34:00+05:30" class="post-date">06 Mar 2014</time>
+    <time datetime="2014-03-11T12:27:00+05:30" class="post-date">11 Mar 2014</time>
 
-    I just updated to Windows 8.1 from 8 and installed Wamp server. At first, Wamp is not working. I mean, I can't open the localhost or any other services from Wamp. So I queried Google and tried installing apache (click Wamp -&gt; Apache -&gt; service -&gt; install service) and mysql&nbsp;<span style="font-family: '';">(click Wamp -&gt; MySql-&gt; service -&gt; install service)&nbsp;</span>service. That's it, everything works.<br /><br />Then I tried the phpmyadmin page but it asked me password like it did the last time. I saved some instructions in my evernote about it once, but I was too fuckin' lazy to go through that shit. So I opened the mysql console and typed:<br />show databases;<br />use mysql;<br />from table user show *;<br /><br />which gave me the username - 'root' and password - ''(blank), using which I used to logged in to my phpmyadmin. But my lazy ass forgot to think about something. I don't want to go through the login page every time on my local server, so all I need is to disable the login page and save me some overhead. So again I went back to my evernote shits. Then I edited (from dir:root/wamp/apps/phpmyadmin/config.inc.php ) the line:<br /><br />/* Authentication type */<br />$cfg['Servers'][$i]['auth_type'] = 'cookie';<br /><br />&nbsp;to<br /><br />/* Authentication type */<br />$cfg['Servers'][$i]['auth_type'] = 'config';<br /><br />Which solved my problem, adios!<br /><br />Resources that might have helped me:<br />http://forum.wampserver.com/read.php?2,116611<br />http://www.ntu.edu.sg/home/ehchua/programming/howto/WampServer_HowTo.html<br /><br />This helps too:<br />http://stackoverflow.com/questions/273159/how-to-determine-if-a-port-is-open-on-a-windows-server<br />http://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html<br /><br />
+    &gt;&gt;import wx<br />&gt;&gt;screen_size = wx.DisplaySize()<br />&gt;&gt;print (screen_size)<br /><br />&gt;&gt;(width, height)<br /><br /><br /><br />
   </article>
   
 </div>
 
 <div class="pagination">
   
-    <span class="pagination-item older">Older</span>
+    <a class="pagination-item older" href="/page18">Older</a>
   
   
     <a class="pagination-item newer" href="/page16">Newer</a>

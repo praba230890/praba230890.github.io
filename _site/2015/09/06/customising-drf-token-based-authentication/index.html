@@ -10,7 +10,7 @@
 
   <title>
     
-      Blog &middot; (or) Scribble Pad
+      Customising Django Rest Framework (DRF) Token Based Authentication &middot; Blog
     
   </title>
 
@@ -37,18 +37,10 @@
       </header>
 
       <main>
-        <div class="posts">
-  
-  <article class="post">
-    <h1 class="post-title">
-      <a href="/2015/09/06/customising-drf-token-based-authentication/">
-        Customising Django Rest Framework (DRF) Token Based Authentication
-      </a>
-    </h1>
-
-    <time datetime="2015-09-06T00:00:00+05:30" class="post-date">06 Sep 2015</time>
-
-    <p>In this project we are going to generate REST API’s for a mobile client which are 
+        <article class="post">
+  <h1 class="post-title">Customising Django Rest Framework (DRF) Token Based Authentication</h1>
+  <time datetime="2015-09-06T00:00:00+05:30" class="post-date">06 Sep 2015</time>
+  <p>In this project we are going to generate REST API’s for a mobile client which are 
 protected by token based authentication. Unlike normal token based authentication 
 provided by DRF, we are not going to use the django default User model for generating and 
 authenticating the tokens. Here, I don’t know why but our client wants to generate tokens based on the
@@ -310,18 +302,43 @@ so create a permissions.py file in authtoken app, with the below piece of code.<
 
 <p>We could make our token to expire at a certain time delta. For this, we could use <a href="https://github.com/JamesRitchie/django-rest-framework-expiring-tokens">django-rest-framework-expiring-tokens</a> project directly or bring those features into your own <code>authtoken</code> app if you like.</p>
 
-  </article>
-  
-</div>
+</article>
 
-<div class="pagination">
-  
-    <a class="pagination-item older" href="/page2">Older</a>
-  
-  
-    <span class="pagination-item newer">Newer</span>
-  
-</div>
+
+<aside class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/2015/09/02/token-based-authentication-django-rest-api/">
+            Token based, authenticated REST API's with the help of Django Rest Framework (DRF)
+            <small><time datetime="2015-09-02T00:00:00+05:30">02 Sep 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/28/configuing-automatic-postgresql/">
+            Configuing Automatic PostgreSQL Database Backup Using Cron
+            <small><time datetime="2015-07-28T12:17:00+05:30">28 Jul 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/2015/07/25/creating-symbolic-links-without-too/">
+            Creating symbolic links without "too many levels of symbolic links" error
+            <small><time datetime="2015-07-25T13:44:00+05:30">25 Jul 2015</time></small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</aside>
+
 
       </main>
 
