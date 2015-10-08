@@ -4,7 +4,7 @@
  <title>Blog</title>
  <link href="http://praba230890.github.io/atom.xml" rel="self"/>
  <link href="http://praba230890.github.io/"/>
- <updated>2015-10-08T08:00:23+05:30</updated>
+ <updated>2015-10-08T08:02:50+05:30</updated>
  <id>http://praba230890.github.io</id>
  <author>
    <name>Prabakaran Santhanam</name>
@@ -282,7 +282,7 @@ so create a permissions.py file in authtoken app, with the below piece of code.&
  </entry>
  
  <entry>
-   <title>Token based, authenticated REST API's with the help of Django Rest Framework (DRF)</title>
+   <title>Token based, authenticated REST API's using Django Rest Framework (DRF)</title>
    <link href="http://praba230890.github.io/2015/09/02/token-based-authentication-django-rest-api/"/>
    <updated>2015-09-02T00:00:00+05:30</updated>
    <id>http://praba230890.github.io/2015/09/02/token-based-authentication-django-rest-api</id>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Token based, authenticated REST API's with the help of Django Rest Framework (DRF)
+title: Token based, authenticated REST API's using Django Rest Framework (DRF)
 ---
 
 ### Add rest_framework and rest_framework.authtoken to installed apps in Django project settings file
