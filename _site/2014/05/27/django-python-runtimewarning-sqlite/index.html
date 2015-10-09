@@ -42,7 +42,19 @@
   <time datetime="2014-05-27T03:53:00+05:30" class="post-date">27 May 2014</time>
   <div style="text-align: justify;"><b>Problem</b>: when running the command,</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><span style="background-color: #0b5394; color: white;">C:\Users\What\Dropbox\Django\mysite&gt;python manage.py shell</span></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">encountered a warning followed by a lengthy traceback from Python interpreter:</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><span style="background-color: #0b5394; color: white;">C:\python27\lib\site-packages\django\db\backends\sqlite3\base.py:58: RuntimeWarning: SQLite received a naive datetime (2014-05-27 02:45:18.709000) while time zone support is active.&nbsp;</span></div><div style="text-align: justify;"><span style="background-color: #0b5394;"><span style="color: white;">....</span></span></div><div style="text-align: justify;"><span style="background-color: #0b5394;"><span style="color: white;">.....</span></span></div><div style="text-align: justify;"><span style="background-color: #0b5394;"><span style="color: white;">....</span></span></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><b>Solution that worked for me</b>: Opened the settings.py file from the current project and replaced the TIME_ZONE variable,</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><span style="background-color: #0b5394; color: white;">TIME_ZONE = 'UTC'</span></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">to</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><span style="background-color: #0b5394; color: white;">TIME_ZONE = timezone.now()</span></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">and added the line</div><div style="text-align: justify;"><br /></div><span style="background-color: #6fa8dc;"></span><br /><div style="text-align: justify;"><span style="background-color: #0b5394; color: white;">from django.utils import timezone&nbsp;</span></div><span style="background-color: #0b5394; color: white;"></span><br /><div style="text-align: justify;"><br /></div><div style="text-align: justify;">at the top of the file to import the timezone.&nbsp;</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><br /></div>
 </article>
-
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'praba230890';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 <aside class="related">
   <h2>Related Posts</h2>

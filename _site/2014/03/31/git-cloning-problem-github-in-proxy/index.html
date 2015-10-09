@@ -42,7 +42,19 @@
   <time datetime="2014-03-31T23:49:00+05:30" class="post-date">31 Mar 2014</time>
   <div style="text-align: justify;">Today after installing <a href="http://spins.fedoraproject.org/scientific-kde/%E2%80%8E" target="_blank">Fedora Scientific</a>, I decided to master Unix type OS and then Git (which I wanted to learn for the last couple of years but had no time). I'm accessing Internet through our college connection which needs proxy to be configured. So, I configured the proxy on Fedora and then Firefox to access this awesome book <a href="http://www.git-scm.com/book" target="_blank">Pro Git</a>.&nbsp;</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Then as per the <a href="http://www.git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository" target="_blank">author said </a>I tried to clone <a href="https://github.com/schacon/grit" target="_blank">this project</a>&nbsp;from GitHub and ended up with an error message. I already had this kind of proxy related mess on Ruby on Rails in Windows, but here in Fedora! I don't know? I first thought. But it was frickin easy to rectify this proxy problem (after a few minutes googling) as I executed this command,</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><span style="background-color: #9fc5e8;">$ git config --global http.proxy '172.16.0.18:8080'</span></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">prior to executing the</div><div style="text-align: justify;"><br /></div><div style="text-align: justify;"><span style="background-color: #9fc5e8;">$ git clone&nbsp;https://github.com/schacon/grit</span></div><div style="text-align: justify;"><br /></div><div style="text-align: justify;">Problem solved. Connection was established and cloning was&nbsp;successful.</div>
 </article>
-
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'praba230890';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 <aside class="related">
   <h2>Related Posts</h2>

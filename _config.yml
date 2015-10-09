@@ -28,3 +28,6 @@ author:
 version:             0.0.1
 github:
   repo:              https://github.com/praba230890/praba230890.github.io
+
+# Disqus comments
+comments:           true

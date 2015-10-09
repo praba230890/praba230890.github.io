@@ -42,7 +42,19 @@
   <time datetime="2014-03-15T20:25:00+05:30" class="post-date">15 Mar 2014</time>
   I tried <a href="http://projectfedena.org/install" target="_blank">installing Fedena </a>this evening. While going through the fifth step i,e executing the command<br /><br /><span style="background-color: #9fc5e8;">rake db:create</span><br /><br />on my command prompt I ended up with this error message "<span style="color: red;">!!! The bundled mysql.rb driver has been removed from Rails 2.2. Please install the mysql gem and try again: gem install mysql. rake aborted! no such file to load -- mysql/mysql_api</span>". I tried a lot of websites for a solution and ended up smoking three cigarettes in a row and of course with no solution.<br /><br />Then after an episode of 'House of cards', I again checked back the error and tried the command<br /><br /><span style="background-color: #9fc5e8; font-family: '';">gem install mysql</span><br /><span style="font-family: '';"><br /></span><span style="font-family: '';">which I did tried three or four times before but neglected the description it gave me. It said the mysql connector was installed successfully but the version might change so get the libmysql.dll from the location it downloaded (for me it is,&nbsp;</span>http://cdn.mysql.com/Downloads/Connector-C/mysql-connector-c-noinstall-6.0.2-win32.zip<span style="font-family: '';">) the connector into C:\ruby\bin (bin folder in your ruby installation).</span><br /><span style="font-family: '';"><br /></span><span style="font-family: '';">Then reluctantly I copied the above url and downloaded the zip file. From the zip I extracted the libmysql.dll (\lib\libmysql.dll) file into the config folder in Fedena directory and replaced the already existing file. That's it. Then the command</span><br /><span style="background-color: #9fc5e8; font-family: '';"><br /></span><span style="background-color: #9fc5e8; font-family: '';">rake db:create</span><br />worked smoothly and I continued installing Fedena successfully.
 </article>
-
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'praba230890';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 <aside class="related">
   <h2>Related Posts</h2>

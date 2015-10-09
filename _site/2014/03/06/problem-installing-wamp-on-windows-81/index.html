@@ -42,7 +42,19 @@
   <time datetime="2014-03-06T07:34:00+05:30" class="post-date">06 Mar 2014</time>
   I just updated to Windows 8.1 from 8 and installed Wamp server. At first, Wamp is not working. I mean, I can't open the localhost or any other services from Wamp. So I queried Google and tried installing apache (click Wamp -&gt; Apache -&gt; service -&gt; install service) and mysql&nbsp;<span style="font-family: '';">(click Wamp -&gt; MySql-&gt; service -&gt; install service)&nbsp;</span>service. That's it, everything works.<br /><br />Then I tried the phpmyadmin page but it asked me password like it did the last time. I saved some instructions in my evernote about it once, but I was too fuckin' lazy to go through that shit. So I opened the mysql console and typed:<br />show databases;<br />use mysql;<br />from table user show *;<br /><br />which gave me the username - 'root' and password - ''(blank), using which I used to logged in to my phpmyadmin. But my lazy ass forgot to think about something. I don't want to go through the login page every time on my local server, so all I need is to disable the login page and save me some overhead. So again I went back to my evernote shits. Then I edited (from dir:root/wamp/apps/phpmyadmin/config.inc.php ) the line:<br /><br />/* Authentication type */<br />$cfg['Servers'][$i]['auth_type'] = 'cookie';<br /><br />&nbsp;to<br /><br />/* Authentication type */<br />$cfg['Servers'][$i]['auth_type'] = 'config';<br /><br />Which solved my problem, adios!<br /><br />Resources that might have helped me:<br />http://forum.wampserver.com/read.php?2,116611<br />http://www.ntu.edu.sg/home/ehchua/programming/howto/WampServer_HowTo.html<br /><br />This helps too:<br />http://stackoverflow.com/questions/273159/how-to-determine-if-a-port-is-open-on-a-windows-server<br />http://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html<br /><br />
 </article>
-
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'praba230890';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 <aside class="related">
   <h2>Related Posts</h2>

@@ -42,7 +42,19 @@
   <time datetime="2015-03-30T12:08:00+05:30" class="post-date">30 Mar 2015</time>
   <span style="color: #274e13;">Rich</span> is a model in an app named <span style="color: #274e13;">strain</span>. I have another app in the same Django project called <span style="color: #274e13;">grain</span> which has a model named <span style="color: #274e13;">Poor</span>. I now want to use the model <span style="color: #274e13;">Rich</span> as a foreign key to the <span style="color: #274e13;">Poor</span> model.<br /><br /><br />We shouldn't import the model directly as it will lead to circular import dependency.<br /><br /><b>A short note on circular import dependency:</b><br />Lets assume that we have two modules in a same directory each importing each other.<br /><br />module 1 -&gt; a.py<br /><br /><blockquote class="tr_bq">from b import dexter<br /># rest of the file</blockquote><br />module 2 -&gt; b.py<br /><br /><blockquote class="tr_bq">import a<br /><br />def dexter():<br />&nbsp; &nbsp; #dexter function<br /><br /># rest of the file</blockquote>If we try to run the b.py module then it will try to import the module a. During the process of import, the a.py will try to import dexter from b.py which in this situation wasn't defined yet as we are still executing the first line of b.py. So no dexter function will be found to import leading to an error.<br /><br /><b><a href="https://docs.djangoproject.com/en/dev/ref/models/fields/#lazy-relationships" target="_blank">Lazy Relationship</a> is what we wanted!</b><br />We shouldn't explicitly import the model to avoid circular import problems. <br /><br />grain&gt;models.py file<br /><blockquote class="tr_bq"><br />class Poor(models.model):<br />&nbsp; &nbsp; rich = models.ForeignKey('grain.Rich') <br />&nbsp;&nbsp;&nbsp; # remaining of the class</blockquote><br />This simply solves our problem.<br /><br />If we already have a <span style="color: #274e13;">Poor</span> and <span style="color: #274e13;">Rich</span> models with data in them we should take care of them first before migrating our database to new changes.<br /><div class="igtranslator-activator-icon" style="background-image: url(&quot;resource://jid1-dgnibwqga0sibw-at-jetpack/igtranslator/data/content_script/icon.png&quot;); display: none; left: 627px; top: 234px;" title="Click to Show Translation"></div><iframe class="igtranslator-iframe" frameborder="0" scrolling="no" src="about:blank" style="display: none; height: 0px; width: 0px;"></iframe><br /><div class="igtranslator-activator-icon" style="background-image: url(&quot;resource://jid1-dgnibwqga0sibw-at-jetpack/igtranslator/data/content_script/icon.png&quot;); display: block; left: 266px; top: 892px;" title="Click to Show Translation"></div>
 </article>
-
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'praba230890';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 <aside class="related">
   <h2>Related Posts</h2>
